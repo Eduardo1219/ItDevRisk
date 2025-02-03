@@ -17,10 +17,10 @@ namespace Domain.OperationCategory.Entity
 
         public bool ValidateOperation(DateTime referenceDate, DateTime nextPaymentDate, decimal value)
         {
-            bool validDaysBefore = this.ValidateDaysAfter(referenceDate, nextPaymentDate);
-            bool validDaysAfter = this.ValidateDaysBefore(referenceDate, nextPaymentDate);
+            bool validDaysBefore = this.ValidateDaysBefore(referenceDate, nextPaymentDate);
+            bool validDaysAfter = this.ValidateDaysAfter(referenceDate, nextPaymentDate);
             bool validInitalValue = this.ValidateInitialValue(value);
-            bool validEndValue = this.ValidateInitialValue(value);
+            bool validEndValue = this.ValidateEndValue(value);
 
             return validDaysBefore && validDaysAfter && validInitalValue && validEndValue;
         }

@@ -33,7 +33,7 @@ namespace ItDevRisk.Actions
                 return;
             }
 
-            Console.WriteLine("======= Categorizar operações =========");
+            Console.WriteLine("======= Categorize operations =========");
             Console.Write("Inform the referential date: ");
             var referenceDate = GetValidDateInput();
             Console.Write("Inform the operations quantity: ");
@@ -148,8 +148,8 @@ namespace ItDevRisk.Actions
 
                 if (!isValidInpt || intNumbFormated <= 0)
                 {
-                    Console.WriteLine("Número informado invalido!");
-                    Console.WriteLine("Exemplos de números válidos: 1, 2");
+                    Console.WriteLine("Number informed is invalid!");
+                    Console.WriteLine("Example of valid numbers: 1, 2");
                     WriteTraceLine();
                     continue;
                 }
@@ -170,15 +170,15 @@ namespace ItDevRisk.Actions
                 var referenceDateInpt = Console.ReadLine();
                 if (string.IsNullOrEmpty(referenceDateInpt))
                 {
-                    Console.WriteLine("É obrigatório informar uma data de refêrencia!");
+                    Console.WriteLine("Reference date is required!");
                     continue;
                 }
                 var (isValidDate, dateFormated) = referenceDateInpt.TryParseValidDate();
 
                 if (!isValidDate)
                 {
-                    Console.WriteLine("Data informada inválida!");
-                    Console.WriteLine("Exemplos de datas válidas: 02/02/2025, 01/01/2024");
+                    Console.WriteLine("Date informed is invalid!");
+                    Console.WriteLine("Example of valid dates: 02/02/2025, 01/01/2024");
                     WriteTraceLine();
                     continue;
                 }
