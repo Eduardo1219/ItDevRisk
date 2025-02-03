@@ -27,9 +27,9 @@ namespace ItDevRisk.Actions
             while (isRunning)
             {
                 Console.Clear();
-                Console.WriteLine("=== Menu ===");
-                Console.WriteLine("1. Categorizar Operações");
-                Console.WriteLine("2. Gerenciar Categorias");
+                Console.WriteLine("========= Menu =========");
+                Console.WriteLine("1. Categorize Operations");
+                Console.WriteLine("2. Manage Categories");
                 Console.WriteLine("3. Exit");
                 Console.Write("Select an option: ");
 
@@ -39,10 +39,10 @@ namespace ItDevRisk.Actions
                 {
                     case "1":
                         var categorize = new CategorizeAction(_operationCategoryService);
-                        await categorize.CategorizeOperation();
+                        await categorize.ExecuteAsync();
                         break;
                     case "2":
-                        Console.WriteLine("You selected Option 2.");
+                        Console.WriteLine("Not implemented yet.");
                         break;
                     case "3":
                         isRunning = false;
@@ -55,7 +55,7 @@ namespace ItDevRisk.Actions
 
                 if (isRunning)
                 {
-                    Console.WriteLine("\nPress any key to continue...");
+                    Console.WriteLine("\nPress any key to return to menu...");
                     Console.ReadKey();
                 }
 

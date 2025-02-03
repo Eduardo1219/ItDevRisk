@@ -13,5 +13,6 @@ namespace Domain.OperationCategory.Service
         Task UpdateCategory(OperationCategoryEntity categoryEntity);
         Task<List<OperationCategoryEntity>> GetAllCategories();
         Task<OperationCategoryEntity> GetCategoryByPriorityLevel(int priority);
+        Task RemoveCategory(OperationCategoryEntity categoryEntity);
     }
 }

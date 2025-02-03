@@ -26,13 +26,6 @@ namespace Infraestructure.Repository.Base
             await _context.SaveChangesAsync();
         }
 
-        public virtual async Task AddRangeAsync(List<B> entity)
-        {
-            var dbSet = _context.Set<B>();
-            dbSet.AddRange(entity);
-            await _context.SaveChangesAsync();
-        }
-
         public virtual async Task<List<B>> GetAll()
         {
             return await _context.Set<B>()
@@ -72,39 +65,10 @@ namespace Infraestructure.Repository.Base
             await _context.SaveChangesAsync();
         }
 
-        public virtual async Task RemoveManyAsync(List<B> entity)
-        {
-            var dbSet = _context.Set<B>();
-            dbSet.RemoveRange(entity);
-
-            await _context.SaveChangesAsync();
-        }
-
-        public virtual async Task RemoveByIdAsync(Guid id)
-        {
-            var dbSet = _context.Set<B>();
-            var entity = await dbSet.FirstOrDefaultAsync(e => e.Id == id);
-
-            if (entity == null)
-                return;
-
-            dbSet.Remove(entity);
-
-            await _context.SaveChangesAsync();
-        }
-
         public virtual async Task UpdateAsync(B entity)
         {
             var dbSet = _context.Set<B>();
             dbSet.Update(entity);
-
-            await _context.SaveChangesAsync();
-        }
-
-        public virtual async Task UpdateManyAsync(List<B> entities)
-        {
-            var dbSet = _context.Set<B>();
-            dbSet.UpdateRange(entities);
 
             await _context.SaveChangesAsync();
         }

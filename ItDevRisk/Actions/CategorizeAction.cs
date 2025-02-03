@@ -22,7 +22,7 @@ namespace ItDevRisk.Actions
             _operationCategoryService = operationCategoryService;
         }
 
-        public async Task CategorizeOperation()
+        public async Task ExecuteAsync()
         {
             Console.Clear();
             var categories = await GetCategoryEntities();
@@ -39,6 +39,7 @@ namespace ItDevRisk.Actions
             Console.Write("Inform the operations quantity: ");
             var operationsQnt = GetValidIntNumberInput();
             var operations = GetCategoriesInformation(operationsQnt);
+            WriteTraceLine();
             await GetOperationCategoryName(referenceDate, operations, categories);
         }
 
@@ -155,35 +156,6 @@ namespace ItDevRisk.Actions
 
                 askForInput = false;
                 numberInpt = intNumbFormated;
-            } while (askForInput);
-            return numberInpt;
-        }
-
-        public decimal GetValidDecimalNumberInput()
-        {
-            var askForInput = true;
-            var numberInpt = decimal.MinValue;
-
-            do
-            {
-                var referenceDateInpt = Console.ReadLine();
-                if (string.IsNullOrEmpty(referenceDateInpt))
-                {
-                    Console.WriteLine("É obrigatório informar uma quantidade!");
-                    continue;
-                }
-                var (isValidInpt, decimNumbFormated) = referenceDateInpt.TryParseValidDecimal();
-
-                if (!isValidInpt)
-                {
-                    Console.WriteLine("Número informado invalido!");
-                    Console.WriteLine("Exemplos de números válidos: 1, 2");
-                    WriteTraceLine();
-                    continue;
-                }
-
-                askForInput = false;
-                numberInpt = decimNumbFormated;
             } while (askForInput);
             return numberInpt;
         }

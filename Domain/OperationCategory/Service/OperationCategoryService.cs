@@ -27,6 +27,11 @@ namespace Domain.OperationCategory.Service
             await _repository.UpdateAsync(categoryEntity);
         }
 
+        public async Task RemoveCategory(OperationCategoryEntity categoryEntity)
+        {
+            await _repository.RemoveAsync(categoryEntity);
+        }
+
         public async Task<List<OperationCategoryEntity>> GetAllCategories()
         {
             return await _repository.GetAll();

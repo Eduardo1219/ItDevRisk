@@ -24,4 +24,3 @@ using (var scope = host.Services.CreateScope())
 }
 
 var my = host.RunAsync();
-//await host.RunAsync();
