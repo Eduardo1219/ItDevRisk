@@ -9,11 +9,11 @@ namespace Domain.OperationCategory.Entity.Enum
 {
     public enum SectorEnum
     {
-        [Description("Público")]
+        [Description("Public")]
         PublicSector = 1,
-        [Description("Privado")]
+        [Description("Private")]
         PrivateSector = 2,
-        [Description("Todos")]
+        [Description("All")]
         AnySector = 3
     }
 }

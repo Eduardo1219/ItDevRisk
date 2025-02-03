@@ -17,7 +17,6 @@ namespace Infraestructure.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
             modelBuilder.Entity<OperationCategoryEntity>().HasData(OperationCategoryMock.GetMockCategoryEntities());
         }
     }

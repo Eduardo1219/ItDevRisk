@@ -19,10 +19,11 @@ namespace ItDevRisk.DomainInjection
 
         public static void ConfigureContext(IServiceCollection services, IConfiguration configuration)
         {
-            var folder = Environment.SpecialFolder.LocalApplicationData;
-            var path = Environment.GetFolderPath(folder);
-            var DbPath = System.IO.Path.Join(path, "blogging.db");
-            services.AddDbContext<DevRiskContext>(options => options.UseSqlite(configuration.GetConnectionString("Database")));
+            string workingDirectory = Environment.CurrentDirectory;
+            string projectDirectory = Directory.GetParent(workingDirectory).Parent.Parent.FullName;
+            var DbPath = System.IO.Path.Join(projectDirectory, configuration["SqLiteConfig:Database"]);
+            services.AddDbContext<DevRiskContext>(options => options.UseSqlite($"Data Source={DbPath}"));
+            //services.AddDbContext<DevRiskContext>(options => options.UseSqlite(configuration.GetConnectionString("Database")));
         }
 
         public static void ConfigureOperationCategory(IServiceCollection services)

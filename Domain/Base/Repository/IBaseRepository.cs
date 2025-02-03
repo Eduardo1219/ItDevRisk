@@ -7,7 +7,7 @@ namespace Domain.Base.Repository
     {
         Task AddAsync(TB entity);
 
-        Task RemoveAsync(TB entity);
+        Task RemoveAsync(TB entity); 
 
         Task RemoveByIdAsync(Guid id);
 

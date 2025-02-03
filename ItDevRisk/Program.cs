@@ -1,9 +1,11 @@
-﻿// See https://aka.ms/new-console-template for more information
-
+﻿using Domain.OperationCategory.Service;
+using ItDevRisk.Actions;
 using ItDevRisk.DomainInjection;
+using ItDevRisk.Helpers;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using System.Globalization;
 
 IHost host = Host.CreateDefaultBuilder(args)
 
@@ -11,25 +13,15 @@ IHost host = Host.CreateDefaultBuilder(args)
     .ConfigureServices((h, services) =>
     {
         services.AddInfraestructure(h.Configuration);
-        services.AddTransient<MyService>();
+        services.AddTransient<MainActions>();
     })
     .Build();
 
-// var my = host.Services.GetRequiredService<MyService>();
-// await my.ExecuteAsync();
-await host.RunAsync();
-
-class MyService
+using (var scope = host.Services.CreateScope())
 {
-    private readonly ILogger<MyService> _logger;
-
-    public MyService(ILogger<MyService> logger)
-    {
-        _logger = logger;
-    }
-
-    public async Task ExecuteAsync(CancellationToken stoppingToken = default)
-    {
-        _logger.LogInformation("Doing something");
-    }
+    var mainAction = scope.ServiceProvider.GetRequiredService<MainActions>();
+    await mainAction.ExecuteAsync();
 }
+
+var my = host.RunAsync();
+//await host.RunAsync();

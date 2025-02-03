@@ -29,7 +29,7 @@ namespace Domain.OperationCategory.Service
 
         public async Task<List<OperationCategoryEntity>> GetAllCategories()
         {
-            return await _repository.FindAsync(o => true);
+            return await _repository.GetAll();
         }
 
         public async Task<OperationCategoryEntity> GetCategoryByPriorityLevel(int priority)
