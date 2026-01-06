@@ -19,4 +19,5 @@ namespace Infraestructure.Repository.OperationCategory
             _devRiskContext = devRiskContext;
         }
     }
+    // hey friend
 }
